@@ -2,19 +2,22 @@
   "name": "my-node-cli",
   "version": "1.0.0",
   "description": "A simple CLI tool to display date and time",
-  "main": "index.js",
+  "main": "dist/index.js",
   "bin": {
-    "my-node-cli": "./index.js"
+    "my-node-cli": "./dist/index.js"
   },
   "files": [
-    "index.js",
+    "dist",
     "README.md"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublishOnly": "npm test",
+    "prepublishOnly": "npm test && npm run build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\""
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "build": "rollup -c rollup.config.mjs",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean"
   },
   "keywords": [
     "cli",
@@ -27,10 +30,15 @@
     "chalk": "^4.1.2",
     "commander": "^13.1.0"
   },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.40.0"
+  },
   "engines": {
     "node": ">=14.0.0"
-  },
-  "devDependencies": {
-    "prettier": "^3.2.5"
   }
 }

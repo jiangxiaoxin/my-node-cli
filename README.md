@@ -102,6 +102,29 @@ npm run format:check
 
 如需修改调试参数，请编辑 `.vscode/launch.json` 文件中的 `args` 数组。
 
+## 构建
+
+项目使用 Rollup 进行打包，生成优化后的代码和 sourcemap 文件。
+
+### 构建命令
+
+- 构建项目：
+
+```bash
+npm run build
+```
+
+- 清理构建目录：
+
+```bash
+npm run clean
+```
+
+构建后的文件位于 `dist` 目录中，包括：
+
+- `index.js`：打包后的代码
+- `index.js.map`：sourcemap 文件
+
 ## 打包和发布
 
 ### 本地测试

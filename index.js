@@ -14,6 +14,7 @@ program
 program
   .option('--time', '显示当前时间')
   .option('--date', '显示当前日期')
+  .description('如果不带参数，将显示当前日期和时间')
   .action(options => {
     // 在开发环境下打印参数信息
     if (isDevelopment) {
@@ -32,7 +33,7 @@ program
       console.log(chalk.cyan('当前日期：'));
       console.log(chalk.magenta(now.toLocaleDateString()));
     } else {
-      console.log(chalk.cyan('当前：'));
+      console.log(chalk.cyan('当前日期和时间：'));
       console.log(chalk.yellow(now.toLocaleString()));
     }
   });
