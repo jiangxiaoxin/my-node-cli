@@ -8,9 +8,9 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "stopOnEntry": true,
-            "program": "${workspaceFolder}/dist/index.js",
-            "preLaunchTask": "tsc: build - tsconfig.json",
+            "runtimeExecutable": "node",
+            "runtimeArgs": ["--loader", "ts-node/esm"],
+            "program": "${workspaceFolder}/src/index.ts",
             "outFiles": ["${workspaceFolder}/dist/**/*.js"],
             "args": [],
             "env": {
@@ -25,9 +25,9 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "stopOnEntry": true,
-            "program": "${workspaceFolder}/dist/index.js",
-            "preLaunchTask": "tsc: build - tsconfig.json",
+            "runtimeExecutable": "node",
+            "runtimeArgs": ["--loader", "ts-node/esm"],
+            "program": "${workspaceFolder}/src/index.ts",
             "outFiles": ["${workspaceFolder}/dist/**/*.js"],
             "args": ["--date"],
             "env": {

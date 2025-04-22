@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "A simple CLI tool to display date and time",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "bin": {
     "my-node-cli": "./dist/index.js"
   },
@@ -13,13 +19,15 @@
     "README.md"
   ],
   "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node --esm src/index.ts",
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "npm test && npm run build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "build": "npm run clean && tsc && rollup -c rollup.config.mjs",
-    "clean": "rimraf dist",
-    "dev": "tsc --watch"
+    "clean": "rimraf dist"
   },
   "keywords": [
     "cli",
@@ -30,7 +38,8 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.2",
-    "commander": "^13.1.0"
+    "commander": "^13.1.0",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -40,6 +49,7 @@
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "rollup": "^4.40.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "engines": {

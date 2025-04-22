@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
+import 'dotenv/config';
 import { Command } from 'commander';
 import chalk from 'chalk';
+import { core } from './core';
 
 // 获取环境变量
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -27,18 +29,7 @@ program
       console.log(chalk.blue('==============\n'));
     }
 
-    const now = new Date();
-
-    if (options.time) {
-      console.log(chalk.cyan('当前时间：'));
-      console.log(chalk.green(now.toLocaleTimeString()));
-    } else if (options.date) {
-      console.log(chalk.cyan('当前日期：'));
-      console.log(chalk.magenta(now.toLocaleDateString()));
-    } else {
-      console.log(chalk.cyan('当前日期和时间：'));
-      console.log(chalk.yellow(now.toLocaleString()));
-    }
+    core(options);
   });
 
 program.parse();
