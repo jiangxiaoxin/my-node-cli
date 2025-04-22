@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 
-const { program } = require('commander');
-const chalk = require('chalk');
+import { Command } from 'commander';
+import chalk from 'chalk';
 
 // 获取环境变量
 const isDevelopment = process.env.NODE_ENV === 'development';
+
+// 创建命令行程序
+const program = new Command();
 
 program
   .name('my-node-cli')
@@ -15,7 +18,7 @@ program
   .option('--time', '显示当前时间')
   .option('--date', '显示当前日期')
   .description('如果不带参数，将显示当前日期和时间')
-  .action(options => {
+  .action((options: { time?: boolean; date?: boolean }) => {
     // 在开发环境下打印参数信息
     if (isDevelopment) {
       console.log(chalk.blue('=== 开发环境 ==='));

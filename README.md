@@ -104,7 +104,7 @@ npm run format:check
 
 ## 构建
 
-项目使用 Rollup 进行打包，生成优化后的代码和 sourcemap 文件。
+项目使用 TypeScript 和 Rollup 进行构建，生成优化后的代码和 sourcemap 文件。
 
 ### 构建命令
 
@@ -120,10 +120,17 @@ npm run build
 npm run clean
 ```
 
+- 开发模式（监视文件变化）：
+
+```bash
+npm run dev
+```
+
 构建后的文件位于 `dist` 目录中，包括：
 
 - `index.js`：打包后的代码
 - `index.js.map`：sourcemap 文件
+- `index.d.ts`：TypeScript 类型声明文件
 
 ## 打包和发布
 
